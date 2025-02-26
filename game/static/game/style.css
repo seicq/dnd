@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    font-family: "JetBrains Mono", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    background: url('/static/images/background.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #05445E;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Game Title */
+h1 {
+    font-size: 2.2em;
+    margin-top: 20px;
+    color: #003B73;
+}
+
+/* Instruction Text */
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #05445E;
+}
+
+/* Block Container (Vertical Alignment) */
+#block-container {
+    display: flex;
+    flex-direction: column; /* Blocks aligned vertically */
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: transparent;  /* Removed background */
+    border-radius: 12px;
+    margin: auto;
+    width: 50%;
+    min-height: 200px;
+    box-shadow: none;  /* Optionally remove box-shadow */
+}
+
+/* Draggable Blocks (Using Button-53 Styling) */
+.draggable-block {
+    background-color: #3DD1E7; /* Light blue */
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: #000000; /* Black text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+    padding: 0.75rem 1.65rem;
+    text-align: center;
+    text-decoration: none;
+    width: fit-content;
+    min-width: 150px;
+    text-transform: uppercase;
+    border-radius: 8px;
+    position: relative;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transform: rotate(-2deg); /* Slight tilt */
+    transition: all 0.2s ease;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Outline Effect */
+.draggable-block:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+}
+
+/* Hover Effect */
+.draggable-block:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
+
+/* Drop Zone (Side-by-Side Blocks with Fixed Size) */
+#drop-zone {
+    margin-top: 20px;
+    width: 50%;
+    min-height: 150px;
+    border: 3px dashed #05445E;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    font-size: 1.5em;
+    color: #003B73;
+    border-radius: 12px;
+    margin: auto;
+    transition: background 0.3s, transform 0.2s;
+    
+    display: flex;
+    flex-wrap: wrap; /* Arrange blocks side by side */
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Ensure Blocks Keep Their Size in Drop Zone */
+#drop-zone .draggable-block {
+    width: fit-content;
+    min-width: 150px;
+    height: auto;
+    padding: 10px 20px;
+}
+
+/* Highlight Drop Zone on Drag Over */
+#drop-zone.dragover {
+    background: rgba(0, 126, 167, 0.3);
+    transform: scale(1.05);
+}
+
+/* Submit Button */
+#submit-sequence {
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.2em;
+    background: #005B96;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Submit Button Hover */
+#submit-sequence:hover {
+    background: #003B73;
+}
+
+/* Mobile Responsive */
+@media (min-width: 768px) {
+    #block-container, #drop-zone {
+        width: 80%;
+    }
+    .draggable-block {
+        padding: .75rem 3rem;
+        font-size: 1.25rem;
+    }
+}

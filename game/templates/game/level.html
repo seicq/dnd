@@ -1,0 +1,37 @@
+{% load static %}  <!-- ✅ Load the static tag at the beginning -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level {{ level.level_id }}</title>
+    <link rel="stylesheet" href="{% static 'game/style.css' %}">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Level {{ level.level_id }}</h1>
+    <h1>{{ level.description }}</h1>
+
+    <div id="block-container">
+        {% for block in blocks %}
+            <div class="draggable-block" draggable="true" id="block-{{ forloop.counter }}">
+                {{ block.content }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div id="drop-zone">
+        <p id="drop-placeholder">Drop Here</p> <!-- Placeholder -->
+    </div>
+    
+    <button id="submit-sequence">Submit</button>
+
+    <script>
+        const levelId = {{ level.level_id }};  // Get level ID for validation
+    </script>
+    <script src="{% static 'game/script.js' %}"></script>  <!-- ✅ Correct way to load JS -->
+</body>
+</html>
